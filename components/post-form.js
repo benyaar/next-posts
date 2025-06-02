@@ -1,8 +1,9 @@
 'use client'
+
 import { useFormState } from "react-dom";
 import FormSubmit from "./form-submit";
 export default function PostForm({action}){
-    const [state, formAction] = useFormState(action, {action})
+    const [state, formAction] = useFormState(action)
 
   return (
     <>
@@ -28,11 +29,11 @@ export default function PostForm({action}){
         <p className="form-actions">
           <FormSubmit/>
         </p>
-        {state.errors && (
+        {state?.errors && (
             <ul className="form-errors">
-                {state.errors.map((error)=> {
+                {state.errors.map((error)=> (
                     <li key={error}>{error}</li>
-                })}
+                ))}
             </ul>
         )}
       </form>
